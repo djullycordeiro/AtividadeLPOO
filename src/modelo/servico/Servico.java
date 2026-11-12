@@ -1,11 +1,13 @@
-package src;
+package modelo.servico;
+
+import excecoes.ValorInvalidoException;
 
 public abstract class Servico {
     //n é permitido instanciar diretamente a classe Servico, pois ela é abstrata. Ela serve como base para as subclasses.
     private String descricao;
     private double valorBase;
 
-    public Servico(String descricao, double valorBase) {
+    public Servico(String descricao, double valorBase) throws ValorInvalidoException {
         setDescricao(descricao);
         setValorBase(valorBase);
     }
@@ -14,12 +16,12 @@ public abstract class Servico {
         return descricao;
     }
 
-    public void setDescricao(String descricao){
+    public void setDescricao(String descricao) throws ValorInvalidoException{
         if (descricao != null && !descricao.trim().isEmpty()){
             this.descricao = descricao;
         }
         else {
-            System.out.println("Digite uma descrição válida");
+            throw new ValorInvalidoException("Digite uma descrição válida");
         }
     }
 
@@ -27,12 +29,12 @@ public abstract class Servico {
         return valorBase;
     }
 
-    public void setValorBase(double valorBase){
+    public void setValorBase(double valorBase) throws ValorInvalidoException{
         if (valorBase > 0){
             this.valorBase = valorBase;
         }
         else{
-            System.out.println("Digite um valor válido");
+            throw new ValorInvalidoException ("Digite um valor válido");
         }
     }
 

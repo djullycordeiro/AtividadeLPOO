@@ -1,9 +1,11 @@
-package src;
+package modelo.servico;
+
+import excecoes.ValorInvalidoException;
 
 public class ServicoComPecas extends Servico {
     private double valorPecas;
 
-    public ServicoComPecas (String descricao, double valorBase, double valorPecas){
+    public ServicoComPecas (String descricao, double valorBase, double valorPecas) throws ValorInvalidoException{
         super(descricao, valorBase);
         setValorPecas(valorPecas);
 
@@ -12,12 +14,12 @@ public double getValorPecas(){
     return valorPecas;
 }
 
-public void setValorPecas(double valorPecas){
-    if (valorPecas > 0){
+public void setValorPecas(double valorPecas) throws ValorInvalidoException{
+    if (valorPecas >= 0){
         this.valorPecas = valorPecas;
     }
     else{
-        System.out.println("Valor de peça inválido! Digite novamente.");
+        throw new ValorInvalidoException("Valor de peça inválido! Digite novamente.");
     }
 }
 
@@ -29,6 +31,7 @@ public double calcularPrecoFinal (){
 @Override
 public void exibirInformacoes() {
     System.out.println(getDescricao());
+    System.out.println("     Tipo: Com peças");
     System.out.printf("     Valor base: R$ %.2f%n", getValorBase());
     System.out.printf("     Peças: R$ %.2f%n", valorPecas);
     System.out.printf("     Preço final: R$ %.2f%n", calcularPrecoFinal());

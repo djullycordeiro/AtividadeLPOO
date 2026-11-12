@@ -1,11 +1,15 @@
-package src;
+package modelo;
+
+import java.time.Year;
+
+import excecoes.ValorInvalidoException;
 
 public class Veiculo {
     private String placa;
     private String modelo;
     private int ano;
 
-    public Veiculo(String placa, String modelo, int ano) {
+    public Veiculo(String placa, String modelo, int ano) throws ValorInvalidoException{
         setPlaca(placa);
         setModelo(modelo);
         setAno(ano);
@@ -15,12 +19,12 @@ public class Veiculo {
         return placa;
     }
 
-    public void setPlaca(String placa){
+    public void setPlaca(String placa) throws ValorInvalidoException{
         if (placa != null && !placa.trim().isEmpty()){
             this.placa = placa.trim().toUpperCase();
         }
         else{
-            System.out.println("Placa inválida! Digite novamente");
+            throw new ValorInvalidoException("Essa placa é inválida!");
         }
     }
 
@@ -28,12 +32,12 @@ public class Veiculo {
         return modelo;
     }
 
-    public void setModelo(String modelo){
+    public void setModelo(String modelo) throws ValorInvalidoException{
         if (modelo != null && !modelo.trim().isEmpty()){
             this.modelo = modelo;
         }
         else{
-            System.out.println("Modelo inválido! Digite novamente.");
+            throw new ValorInvalidoException("Esse modelo é inválido!");
         }
     }
 
@@ -41,12 +45,12 @@ public class Veiculo {
         return ano;
     }
 
-    public void setAno(int ano){
-        if (ano > 0 && ano <= 2026){
+    public void setAno(int ano) throws ValorInvalidoException{
+        if (ano > 0 && ano <= Year.now().getValue()){
             this.ano = ano;
         }
         else{
-            System.out.println("Ano inválido! Digite novamente.");
+            throw new ValorInvalidoException("Esse ano é inválido!");
         }
     }
 

@@ -1,9 +1,11 @@
-package src;
+package modelo.servico;
+
+import excecoes.ValorInvalidoException;
 
 public class ServicoDiagnostico extends Servico {
     private boolean possuiReparo;
 
-    public ServicoDiagnostico(String descricao, double valorBase, boolean possuiReparo){
+    public ServicoDiagnostico(String descricao, double valorBase, boolean possuiReparo) throws ValorInvalidoException{
         super(descricao, valorBase);
         setPossuiReparo(possuiReparo);
     }
@@ -27,6 +29,7 @@ public class ServicoDiagnostico extends Servico {
     @Override
     public void exibirInformacoes() {
         System.out.println(getDescricao());
+        System.out.println("     Tipo: Diagnóstico");
         System.out.printf("     Valor base: R$ %.2f%n", getValorBase());
         System.out.println("     Reparo realizado: " + (possuiReparo ? "Sim" : "Não"));
         System.out.printf("     Preço final: R$ %.2f%n", calcularPrecoFinal());
