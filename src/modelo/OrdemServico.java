@@ -6,7 +6,7 @@ import modelo.servico.Servico;
 
 public class OrdemServico implements Descontavel {
     public enum Estado { ABERTA, FINALIZADA }
-
+    //atributos
     private int numero;
     private String nomeCliente;
     private Veiculo veiculo;
@@ -15,6 +15,7 @@ public class OrdemServico implements Descontavel {
     private double percentualDesconto;
     private Estado estado;
 
+    //construtor
     public OrdemServico(int numero, String nomeCliente, Veiculo veiculo, int capacidadeMaxima)
             throws ValorInvalidoException {
         setNumero(numero);

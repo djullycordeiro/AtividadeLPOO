@@ -5,9 +5,11 @@ import interfaces.Buscavel;
 import modelo.OrdemServico;
 
 public class GerenciadorOrdens implements Buscavel {
+    //atributos
     private OrdemServico[] ordens;
     private int quantidadeOrdens;
 
+    //construtor
     public GerenciadorOrdens(int capacidade) throws ValorInvalidoException {
         if (capacidade <= 0) {
             throw new ValorInvalidoException("Capacidade do gerenciador deve ser positiva!");
