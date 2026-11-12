@@ -20,6 +20,14 @@ public class GerenciadorOrdens implements Buscavel {
         return quantidadeOrdens;
     }
 
+    /** Retorna a ordem na posição informada (0 até getQuantidadeOrdens() - 1). */
+    public OrdemServico getOrdem(int indice) {
+        if (indice < 0 || indice >= quantidadeOrdens) {
+            throw new IndexOutOfBoundsException("Índice de ordem inválido: " + indice);
+        }
+        return ordens[indice];
+    }
+
     public void adicionarOrdem(OrdemServico ordem) throws ValorInvalidoException, CapacidadeExcedidaException {
         if (ordem == null) {
             throw new ValorInvalidoException("Ordem não pode ser nula!");
