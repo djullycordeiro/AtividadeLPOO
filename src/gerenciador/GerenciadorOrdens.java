@@ -20,7 +20,7 @@ public class GerenciadorOrdens implements Buscavel {
         return quantidadeOrdens;
     }
 
-    /** Retorna a ordem na posição informada (0 até getQuantidadeOrdens() - 1). */
+    //Retorna a ordem na posição informada (0 até getQuantidadeOrdens() - 1)
     public OrdemServico getOrdem(int indice) {
         if (indice < 0 || indice >= quantidadeOrdens) {
             throw new IndexOutOfBoundsException("Índice de ordem inválido: " + indice);
@@ -53,7 +53,7 @@ public class GerenciadorOrdens implements Buscavel {
         }
     }
 
-    /** Retorna a ordem com o número informado ou null se não existir. */
+    // Retorna a ordem com o número informado ou null se não existir
     public OrdemServico buscarPorNumero(int numero) {
         for (int i = 0; i < quantidadeOrdens; i++) {
             if (ordens[i].getNumero() == numero) {

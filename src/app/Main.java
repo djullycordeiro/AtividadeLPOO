@@ -134,7 +134,7 @@ public class Main {
         System.out.println("Ordem nº " + ordem.getNumero() + " FINALIZADA com sucesso.");
     }
 
-    // ---------- leitura do console (trata erros de digitação permitindo nova tentativa) ----------
+    // leitura do console (trata erros de digitação permitindo nova tentativa)
 
     private static String lerLinha(Scanner scanner, String mensagem) {
         System.out.print(mensagem);
